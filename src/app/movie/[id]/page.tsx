@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { Calendar, Clock, Star, Users, LanguagesIcon as Language, Tag, Globe } from 'lucide-react';
+import { Calendar, Clock, Star, LanguagesIcon as Language, Tag, Globe } from 'lucide-react';
 
 const API_KEY = process.env.NEXT_PUBLIC_KEY;
 const API_URL = 'https://api.themoviedb.org/3';
