@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { Code } from 'lucide-react';
+import Image from 'next/image';
 
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container">
                 <Link href="/" className="navbar-brand d-flex align-items-center">
-                    <img
+                    <Image
                         src="/roteiro.svg"
                         alt="Logo"
                         width="30"

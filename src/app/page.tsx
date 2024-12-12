@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Calendar, Search, Star, Clock, LanguagesIcon as Language } from 'lucide-react';
+import { Calendar, Search, Star, LanguagesIcon as Language } from 'lucide-react';
+import Image from 'next/image';
 
 const API_KEY = process.env.NEXT_PUBLIC_KEY;
 const API_URL = 'https://api.themoviedb.org/3';
@@ -79,7 +80,7 @@ const Page = () => {
                     <div key={movie.id} className="col">
                         <Link href={`/movie/${movie.id}`} className="text-decoration-none">
                             <div className="card h-100">
-                                <img
+                                <Image
                                     src={movie.poster_path 
                                         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                                         : `https://via.placeholder.com/500x750/1a1a1a/ffffff?text=${encodeURIComponent(movie.title)}`}

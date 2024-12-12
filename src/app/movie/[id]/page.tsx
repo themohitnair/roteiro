@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Calendar, Clock, Star, LanguagesIcon as Language, Tag, Globe } from 'lucide-react';
+import Image from 'next/image';
 
 const API_KEY = process.env.NEXT_PUBLIC_KEY;
 const API_URL = 'https://api.themoviedb.org/3';
@@ -67,7 +68,7 @@ const MoviePage = () => {
         <main className="container py-4">
             <div className="row">
                 <div className="col-md-4 mb-4 mb-md-0">
-                    <img
+                    <Image
                         src={movie.poster_path 
                             ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                             : `https://via.placeholder.com/500x750/1a1a1a/ffffff?text=${encodeURIComponent(movie.title)}`}
