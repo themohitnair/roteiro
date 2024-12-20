@@ -86,7 +86,7 @@ const Page = () => {
             return passesGenreFilter && passesYearFilter && passesVoteCountFilter;
         });
 
-        let sortedResults = [...filteredResults];
+        const sortedResults = [...filteredResults];
         switch (sortBy) {
             case 'release_date.asc':
                 sortedResults.sort((a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime());
