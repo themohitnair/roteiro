@@ -78,7 +78,7 @@ const Page = () => {
     };
 
     const applyFiltersAndSort = useCallback((moviesToFilter: Movie[]) => {
-        let filteredResults = moviesToFilter.filter(movie => {
+        const filteredResults = moviesToFilter.filter(movie => {
             const releaseYear = new Date(movie.release_date).getFullYear();
             const passesGenreFilter = selectedGenres.length === 0 || selectedGenres.some(genreId => movie.genre_ids.includes(genreId));
             const passesYearFilter = releaseYear >= yearRange.min && releaseYear <= yearRange.max;
@@ -86,22 +86,23 @@ const Page = () => {
             return passesGenreFilter && passesYearFilter && passesVoteCountFilter;
         });
 
+        let sortedResults = [...filteredResults];
         switch (sortBy) {
             case 'release_date.asc':
-                filteredResults.sort((a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime());
+                sortedResults.sort((a, b) => new Date(a.release_date).getTime() - new Date(b.release_date).getTime());
                 break;
             case 'release_date.desc':
-                filteredResults.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
+                sortedResults.sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
                 break;
             case 'vote_average.desc':
-                filteredResults.sort((a, b) => b.vote_average - a.vote_average);
+                sortedResults.sort((a, b) => b.vote_average - a.vote_average);
                 break;
             default:
                 // Default sorting (by popularity) is already applied by the API
                 break;
         }
 
-        setFilteredMovies(filteredResults);
+        setFilteredMovies(sortedResults);
     }, [selectedGenres, yearRange, minVoteCount, sortBy]);
 
     useEffect(() => {
